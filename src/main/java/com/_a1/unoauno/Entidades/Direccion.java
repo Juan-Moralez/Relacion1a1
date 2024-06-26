@@ -11,20 +11,11 @@ public class Direccion {
     private long id;
     private String calle;
     private String ciudad;
-    private String estado;
-    private String direccion;
-
+    private String provincia;
+    private int codigoPostal;
     @OneToOne()
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona;
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
     public long getId() {
         return id;
@@ -58,11 +49,19 @@ public class Direccion {
         this.ciudad = ciudad;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getProvincia() {
+        return provincia;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public int getCodigoPostal() {
+        return codigoPostal;
+    }
+
+    public void setCodigoPostal(int codigoPostal) {
+        this.codigoPostal = codigoPostal;
     }
 }

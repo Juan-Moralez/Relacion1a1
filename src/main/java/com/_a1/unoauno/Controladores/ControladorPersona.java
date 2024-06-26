@@ -1,4 +1,5 @@
 package com._a1.unoauno.Controladores;
+import com._a1.unoauno.Entidades.Direccion;
 import com._a1.unoauno.Servicios.Servicios;
 import com._a1.unoauno.Entidades.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,11 @@ public class ControladorPersona {
         return personaService.getPersona(id);
     }
 
+    @PostMapping("/with-address")
+    public Persona createPersonaWithAddress(@RequestBody Persona persona, @RequestBody Direccion direccion) {
+        direccion.setPersona(persona);
+        persona.setDireccion(direccion);
+        return personaService.savePersona(persona);
+    }
 
 }
