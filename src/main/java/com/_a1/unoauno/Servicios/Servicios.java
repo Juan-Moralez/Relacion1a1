@@ -7,6 +7,7 @@ import com._a1.unoauno.Repositorios.repositorioPersona;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,8 +27,12 @@ public class Servicios {
         return repositorioPersona.findById(id);
     }
 
+    public List<Persona> getAllPersonas() {
+        return repositorioPersona.findAll();
+    }
+
     @PostConstruct
-    public void subirdatos(){
+    public void subirdatos() {
         Persona persona = new Persona();
         persona.setNombre("Juan");
         persona.setApellido("Moralez");
