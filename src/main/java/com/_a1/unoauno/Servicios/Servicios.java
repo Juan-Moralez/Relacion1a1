@@ -19,6 +19,4 @@ public class Servicios {
         return repositoriopersona.findById(id);
     }
 
-
-
 }
