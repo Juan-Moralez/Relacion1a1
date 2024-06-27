@@ -1,10 +1,8 @@
 package com._a1.unoauno.Entidades;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
 @Entity
 public class Autos {
@@ -14,6 +12,28 @@ public class Autos {
 
     private String marca;
     private String modelo;
+    private int matricula;
+
+    @ManyToOne
+    @JoinColumn(name="persona_id")
+    @JsonBackReference
+    private Persona persona;
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
 
     public Long getId() {
         return id;

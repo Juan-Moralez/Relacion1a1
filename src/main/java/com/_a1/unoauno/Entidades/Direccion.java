@@ -1,6 +1,6 @@
 package com._a1.unoauno.Entidades;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
