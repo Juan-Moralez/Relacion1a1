@@ -31,6 +31,18 @@ public class Servicios {
         return repositorioPersona.findAll();
     }
 
+    public Direccion saveDireccion(Direccion direccion){
+        return repositorioDireccion.save(direccion);
+    }
+
+    public Optional<Direccion> getDireccion(Long id){
+        return repositorioDireccion.findById(id);
+    }
+
+    public List<Direccion> getAllDireccion(){
+        return repositorioDireccion.findAll();
+    }
+
     @PostConstruct
     public void subirdatos() {
         Persona persona = new Persona();
@@ -50,4 +62,6 @@ public class Servicios {
         repositorioPersona.save(persona);
         repositorioDireccion.save(direccion);
     }
+
+
 }

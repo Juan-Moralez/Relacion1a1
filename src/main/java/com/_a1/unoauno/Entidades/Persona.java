@@ -1,6 +1,7 @@
 package com._a1.unoauno.Entidades;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,7 +14,12 @@ public class Persona {
     private String apellido;
     private int edad;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
+    @JsonBackReference
     private Direccion direccion;
+
+
+
+
 
     public Long getId() {
         return id;
