@@ -14,7 +14,6 @@ public class Direccion {
     private int codigoPostal;
     @OneToOne()
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
-    @JsonBackReference
     private Persona persona;
 
     public long getId() {
