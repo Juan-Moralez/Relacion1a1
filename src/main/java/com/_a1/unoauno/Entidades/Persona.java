@@ -1,7 +1,6 @@
 package com._a1.unoauno.Entidades;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -16,7 +15,7 @@ public class Persona {
     private String apellido;
     private int edad;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
-    @JsonBackReference
+    @JsonManagedReference
     private Direccion direccion;
 
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
