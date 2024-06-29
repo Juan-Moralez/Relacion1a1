@@ -16,12 +16,12 @@ public class ControladorAutos {
     private Servicios autoService;
 
     @PostMapping
-    public Autos createAuto(@RequestBody Autos auto) {
+    public Autos createAutos(@RequestBody Autos auto) {
         return autoService.saveAutos(auto);
     }
 
     @GetMapping("/{id}")
-    public Optional<Autos> getAuto(@PathVariable Long id) {
+    public Optional<Autos> getAutos(@PathVariable Long id) {
         return autoService.getAutos(id);
     }
 
@@ -30,4 +30,3 @@ public class ControladorAutos {
         return autoService.getAllAutos();
     }
 }
-

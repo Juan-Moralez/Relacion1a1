@@ -18,7 +18,7 @@ public class ControladorDireccion {
 
     @PostMapping
     public Direccion createDireccion(@RequestBody Direccion direccion){
-        return direccionServicio.saveAutos(direccion);
+        return direccionServicio.saveDireccion(direccion);
     }
 
     @GetMapping("/{id}")

@@ -1,11 +1,11 @@
 package com._a1.unoauno.Entidades;
 
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 @Entity
 public class Persona {
     @Id
@@ -18,18 +18,23 @@ public class Persona {
     @JsonManagedReference
     private Direccion direccion;
 
-    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL,orphanRemoval = true)
     @JsonManagedReference
     private List<Autos> autos;
 
-
+    @ManyToMany
+    @JsonManagedReference
+    @JoinTable(
+        name="Persona_Eventos",
+        joinColumns =@JoinColumn(name = "Persona_id"),
+        inverseJoinColumns = @JoinColumn(name="Evento_id")
+    )
+    private Set<Eventos> eventos= new HashSet<>();
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) {this.id = id;}
 
     public String getNombre() {
         return nombre;
@@ -66,9 +71,36 @@ public class Persona {
     public List<Autos> getAutos() {
         return autos;
     }
-
     public void setAutos(List<Autos> autos) {
         this.autos = autos;
+    }
+
+    public Set<Eventos> getEventos() {
+        return eventos;
+    }
+
+    public void setEventos(Set<Eventos> eventos) {
+        this.eventos = eventos;
+    }
+
+    public void addAuto(Autos auto) {
+        autos.add(auto);
+        auto.setPersona(this);
+    }
+
+    public void removeAuto(Autos auto) {
+        this.autos.remove(autos);
+        auto.setPersona(null);
+    }
+
+    public void addEvento(Eventos evento) {
+        this.eventos.add(evento);
+        evento.getPersonas().add(this);
+    }
+
+    public void removeEvento(Eventos evento) {
+        this.eventos.remove(evento);
+        evento.getPersonas().remove(this);
     }
 
 }
