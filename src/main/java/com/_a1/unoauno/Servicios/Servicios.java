@@ -151,7 +151,7 @@ public class Servicios {
             repositorioAutos.save(auto3);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e.getMessage()+"No sirve esta mierda");
+            System.out.println(e.getMessage()+"No sirve esto");
         }
     }
 
